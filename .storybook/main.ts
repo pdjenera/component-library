@@ -1,58 +1,58 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const config: StorybookConfig = {
   framework: '@storybook/react-webpack5',
-  stories: ['../**/*.mdx', '../**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)', '../**/*.styles.@(css)'],
+
+  docs: {
+    autodocs: 'tag',
+  },
 
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {},
+    reactDocgen: 'react-docgen-typescript'
   },
 
   addons: [
     '@storybook/addon-docs',
-    '@storybook/addon-webpack5-compiler-babel'
+    '@storybook/addon-webpack5-compiler-babel',
+    '@storybook/addon-styling-webpack',
+    '@storybook/preset-scss',
+    '@storybook/addon-essentials',
+    '@storybook/storybook-css-modules'
   ],
 
-  webpackFinal: async (config, { configType }) => {
+  webpackFinal: async (config) => {
 
-    config.module.rules = config.module.rules.filter((f) => f.test?.toString() !== '/\\.mdx$/');
+    config.module.rules = config.module?.rules?.filter((f) => f.test?.toString() !== '/\\.mdx$/');
   
-    config.module.rules.push({
+    config.module?.rules?.push({
       test: /\.mdx$/,
-      use: ['@mdx-js/loader'],
+      use: ['@mdx-js/loader']
     });
 
-    // config.module.rules.push({
-    //   test: /\.(ts|tsx)$/,
-    //   use: [
-    //     {
-    //       loader: require.resolve('ts-loader'),
-    //       options: {
-    //         allowTsInNodeModules: true,
-    //         transpileOnly: true
-    //       },
-    //     },
-    //     {
-    //       loader: require.resolve('react-docgen-typescript-loader'),
-    //     },
-    //   ],
-    // });
+    config.module.rules.push({
+      test: /\.css$/,
+      use: [
+        {
+          loader: 'postcss-loader',
+          options: {
+            postcssOptions: {
+              plugins: { tailwindcss: {}, autoprefixer: {} },
+            },
+          },
+        },
+      ],
+      include: path.resolve(__dirname, '../'),
+    })
 
     config.resolve.extensions.push('.ts', '.tsx', '.js', 'jsx');
-
-    // config.module.rules.push({
-    //   test: /\.stories\.tsx?$/,
-    //   rules: [
-    //     {
-    //       loader: require.resolve('@storybook/source-loader'),
-    //       options: { parser: 'typescript' },
-    //     },
-    //   ],
-    //   enforce: 'pre',
-    // });
 
     return config;
   },
