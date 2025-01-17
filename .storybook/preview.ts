@@ -1,5 +1,11 @@
 /** @type { import('@storybook/react').Preview } */
-const preview = {
+
+import { Preview } from '@storybook/react';
+ 
+import './styles/global.scss';
+import './styles/tokens.scss';
+
+const preview: Preview = {
   parameters: {
     controls: {
       matchers: {
