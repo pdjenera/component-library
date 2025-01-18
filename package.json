@@ -15,7 +15,8 @@
     "test": "jest --verbose",
     "prepare": "husky",
     "lint": "eslint ./src ",
-    "lint:fix": "eslint ./src --fix"
+    "lint:fix": "eslint ./src --fix",
+    "release": "standard-version"
   },
   "babel": {
     "sourceType": "unambiguous",
@@ -106,5 +107,10 @@
   },
   "peerDependencies": {
     "react": ">=16"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "standard-version": "^9.5.0"
   }
 }
