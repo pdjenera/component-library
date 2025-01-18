@@ -12,7 +12,7 @@
     "build-storybook": "storybook build",
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "test": "jest --watchAll --verbose",
+    "test": "jest --verbose",
     "prepare": "husky",
     "lint": "eslint ./src ",
     "lint:fix": "eslint ./src --fix"
