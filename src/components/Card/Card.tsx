@@ -1,6 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import styles from '../Card/Card.module.css';
-import {getClasses} from '../../helpers/styles';
+import { Container } from './Card.styled';
 
 interface Card {
     children: ReactNode;
@@ -8,20 +7,19 @@ interface Card {
     size: "sm" | "lg";
 }
 
-const Card : FC<Card> = ({
+ const Card : FC<Card> = ({
     children,
     color,
     size
 }) => {
 
-    const getStyles = getClasses(styles)({
-        color,
-        size
-    });
-
-    return <div className={getStyles("card", ["color", "size"])}>
-        {children}
-    </div>
+    return (
+        <Container data-testid='cardContainer' color={color} size={size}>
+            {children}
+        </Container>
+    );
 };
+
+
 
 export default Card;
