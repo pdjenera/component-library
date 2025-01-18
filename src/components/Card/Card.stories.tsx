@@ -1,25 +1,23 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { ReactNode } from 'react';
-import Card from "./Card";
-
-
+import React from 'react';
+import Card from './Card';
 
 const meta: Meta<typeof Card> = {
-    title: "Components/Card",
+    title: 'Components/Card',
     component: Card,
     args: {
         children: <div>"I'm a card"</div>
     },
     argTypes: {
         size: {
-            description: "Size of the card you'd like to set",
+            description: 'Size of the card you\'d like to set',
             options: ['sm', 'lg'],
             table: {
                 defaultValue: { summary: 'sm'}
             }
         },
         color: {
-            description: "Color of the card you'd like to set",
+            description: 'Color of the card you\'d like to set',
             options: ['primary', 'secondary'],
             table: {
                 defaultValue: { summary: 'primary'}
@@ -34,30 +32,30 @@ export default meta;
 
 type Story = StoryObj<typeof Card>
 
-export type color = "primary" | "secondary";
+export type color = 'primary' | 'secondary';
 
 export const Primary: Story = {
     args: {
-      color: "primary",
-      size: "sm"
+        color: 'primary',
+        size: 'sm'
     },
 } satisfies Story;
 
 export const Secondary: Story = {
     args: {
-        color: "secondary",
-        size: "sm"
+        color: 'secondary',
+        size: 'sm'
     },
 } satisfies Story;
 
 export const SizeSmall: Story = {
     args: {
-        size: "sm"
+        size: 'sm'
     },
 } satisfies Story;
 
 export const SizeLarge: Story = {
     args: {
-        size: "lg"
+        size: 'lg'
     },
 } satisfies Story;

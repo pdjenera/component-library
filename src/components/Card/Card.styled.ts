@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 interface IObjectKeys {
     [key: string]: string | number;
@@ -15,8 +15,8 @@ const size : IObjectKeys= {
 };
 
 interface Props {
-    color?: "primary" | "secondary";
-    size?: "sm" | "lg";
+    color?: 'primary' | 'secondary';
+    size?: 'sm' | 'lg';
 }
 
 export const Container = styled.div<Props>`
