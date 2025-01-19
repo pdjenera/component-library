@@ -111,6 +111,11 @@
   "dependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "standard-version": "^9.5.0"
+    "@testing-library/dom": "^10.0.0",
+    "@types/node": "*",
+    "postcss": "^8.1.0",
+    "rollup": "^2.14.0",
+    "standard-version": "^9.5.0",
+    "webpack": "^5.0.0"
   }
 }
