@@ -4,7 +4,17 @@ version: 2.1
 orbs:
   node: circleci/node@5
 jobs:
-  test-node:
+  linting:
+    # Install node dependencies and run linter
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          name: Lint
+          command: yarn run lint
+  testing:
     # Install node dependencies and run tests
     executor: node/default
     environment:
@@ -20,7 +30,7 @@ jobs:
           command: yarn run test --ci --runInBand --reporters=default --reporters=jest-junit
       - store_test_results:
           path: ./test-results/
-  build-node:
+  building:
     # Build node project
     executor: node/default
     steps:
@@ -39,6 +49,36 @@ jobs:
       - store_artifacts:
           path: ~/artifacts
           destination: node-build
+  run_release:
+    executor: node/default
+    description: Run release
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          name: Set up git credentials
+          command: |
+            git config --global user.email $GIT_EMAIL 
+            git config --global user.name $GIT_NAME
+      - run:
+          name: Run release
+          command: yarn release
+  publish_to_npm:
+    executor: node/default
+    description: Publish to npm
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          name: Login to npm
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish to npm
+          command: yarn publish
+          enironment:
+            NPM_TOKEN: $NPM_TOKEN
   deploy:
     # This is an example deploy job, not actually used by the workflow
     docker:
@@ -51,10 +91,19 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      - test-node
-      - build-node:
+      - linting
+      - testing:
           requires:
-            - test-node
+            - linting
+      - building:
+          requires:
+            - testing
+      - run_release:
+          requires:
+            - building
+      - publish_to_npm:
+          requires:
+            - run_release
     # - deploy:
     #     requires:
     #       - build-node
