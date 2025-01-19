@@ -4,7 +4,7 @@ version: 2.1
 orbs:
   node: circleci/node@5
 jobs:
-  lint-node:
+  linting:
     # Install node dependencies and run linter
     executor: node/default
     steps:
@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Lint
           command: yarn run lint
-  test-node:
+  testing:
     # Install node dependencies and run tests
     executor: node/default
     environment:
@@ -30,7 +30,7 @@ jobs:
           command: yarn run test --ci --runInBand --reporters=default --reporters=jest-junit
       - store_test_results:
           path: ./test-results/
-  build-node:
+  building:
     # Build node project
     executor: node/default
     steps:
@@ -61,11 +61,11 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      - lint-node
-      - test-node:
+      - linting
+      - testing:
           requires:
             - lint-node
-      - build-node:
+      - building:
           requires:
             - test-node
     # - deploy:
