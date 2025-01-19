@@ -7,8 +7,7 @@ import babel from '@rollup/plugin-babel';
 import postcss from 'rollup-plugin-postcss';
 import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
-import packageJson from './package.json' with { type: 'json' };
-
+import packageJson from './package.json';
 
 export default [
     {
