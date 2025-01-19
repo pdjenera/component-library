@@ -4,6 +4,16 @@ version: 2.1
 orbs:
   node: circleci/node@5
 jobs:
+  lint-node:
+    # Install node dependencies and run linter
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          name: Lint
+          command: yarn run lint
   test-node:
     # Install node dependencies and run tests
     executor: node/default
@@ -51,7 +61,10 @@ jobs:
 workflows:
   build-and-test:
     jobs:
+      - lint-node
       - test-node
+          requires:
+            - lint-node
       - build-node:
           requires:
             - test-node
