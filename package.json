@@ -1,6 +1,7 @@
 {
-  "name": "component-library",
+  "name": "pdjenera-component-library",
   "version": "1.0.0",
+  "description": "A component library developed by Peter Djeneralovic",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
