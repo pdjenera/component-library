@@ -64,10 +64,10 @@ workflows:
       - linting
       - testing:
           requires:
-            - lint-node
+            - linting
       - building:
           requires:
-            - test-node
+            - testing
     # - deploy:
     #     requires:
     #       - build-node
