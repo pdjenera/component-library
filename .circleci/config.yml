@@ -14,6 +14,7 @@ jobs:
       - run:
           name: Lint
           command: yarn run lint
+      - run: yarn semantic-release
   testing:
     # Install node dependencies and run tests
     executor: node/default
@@ -76,11 +77,9 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - run:
           name: Publish to npm
-          command: yarn semantic-release
+          command: yarn publish
           enironment:
             NPM_TOKEN: $NPM_TOKEN
-            GIT_TOKEN: $GIT_TOKEN
-
   deploy:
     # This is an example deploy job, not actually used by the workflow
     docker:
