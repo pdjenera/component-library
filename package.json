@@ -17,7 +17,8 @@
     "prepare": "husky",
     "lint": "eslint ./src ",
     "lint:fix": "eslint ./src --fix",
-    "release": "standard-version"
+    "release": "standard-version",
+    "semantic-release": "semantic-release"
   },
   "babel": {
     "sourceType": "unambiguous",
