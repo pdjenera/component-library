@@ -75,13 +75,12 @@ jobs:
           name: Login to npm
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - run:
-          name: Add github.com to known hosts
-          command: ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - run:
           name: Publish to npm
           command: yarn semantic-release
           enironment:
             NPM_TOKEN: $NPM_TOKEN
+            GIT_TOKEN: $GIT_TOKEN
+
   deploy:
     # This is an example deploy job, not actually used by the workflow
     docker:
