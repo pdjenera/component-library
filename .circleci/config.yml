@@ -62,7 +62,7 @@ workflows:
   build-and-test:
     jobs:
       - lint-node
-      - test-node
+      - test-node:
           requires:
             - lint-node
       - build-node:
