@@ -76,7 +76,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - run:
           name: Publish to npm
-          command: yarn run publish
+          command: yarn publish
           enironment:
             NPM_TOKEN: $NPM_TOKEN
   deploy:
