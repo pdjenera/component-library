@@ -39,6 +39,9 @@
       "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
     }
   },
+  "release": {
+    "branches": ["master", "next"]
+  },
   "repository": "git@github.com:pdjenera/component-library.git",
   "license": "MIT",
   "devDependencies": {
