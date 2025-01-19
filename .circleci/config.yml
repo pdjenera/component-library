@@ -56,7 +56,7 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
-      -run:
+      - run:
           name: Run release
           command: yarn run release
   publish_to_npm:
@@ -88,10 +88,10 @@ workflows:
       - building:
           requires:
             - testing
-      -run_release:
+      - run_release:
           requires:
             - building
-      -publish_to_npm:
+      - publish_to_npm:
           requires:
             - run_release
     # - deploy:
