@@ -1,6 +1,6 @@
 {
   "name": "pdjenera-component-library",
-  "version": "0.0.0-development",
+  "version": "0.0.0",
   "description": "A component library developed by Peter Djeneralovic",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -40,7 +40,10 @@
     }
   },
   "release": {
-    "branches": ["master", "next"]
+    "branches": [
+      "master",
+      "next"
+    ]
   },
   "repository": "git@github.com:pdjenera/component-library.git",
   "license": "MIT",
