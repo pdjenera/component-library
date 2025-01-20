@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
+import Header, { User } from '../Header/Header';
+import { PageContainer } from './Page.styled';
 
-import { Header } from './Header';
-import './page.scss';
-
-export const Page = () => {
-    const [user, setUser] = React.useState();
+export const Page : FC = () => {
+    const [user, setUser] = React.useState<User>();
 
     return (
         <article>
@@ -15,8 +14,8 @@ export const Page = () => {
                 onCreateAccount={() => setUser({ name: 'Jane Doe' })}
             />
 
-            <section className="storybook-page">
-                <h2>Pages in Storybook</h2>
+            <PageContainer>
+                <h2>Pages</h2>
                 <p>
           We recommend building UIs with a{' '}
                     <a href="https://componentdriven.org" target="_blank" rel="noopener noreferrer">
@@ -63,7 +62,9 @@ export const Page = () => {
                     </svg>
           Viewports addon in the toolbar
                 </div>
-            </section>
+            </PageContainer>
         </article>
     );
 };
+
+export default Page;

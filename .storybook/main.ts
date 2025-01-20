@@ -25,7 +25,8 @@ const config: StorybookConfig = {
         '@storybook/addon-styling-webpack',
         '@storybook/preset-scss',
         '@storybook/addon-essentials',
-        '@storybook/storybook-css-modules'
+        '@storybook/storybook-css-modules',
+        '@react-theming/storybook-addon'
     ],
 
     webpackFinal: async (config) => {
