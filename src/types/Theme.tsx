@@ -14,6 +14,7 @@ export const theme = {
         medium: '2em',
         large: '3em'
     }
+    
 };
 
 interface Props {
