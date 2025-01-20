@@ -74,6 +74,11 @@ jobs:
       - run:
           name: Login to npm
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+       - run:
+          name: Set up git credentials
+          command: |
+            git config --global user.email $GIT_EMAIL 
+            git config --global user.name $GIT_NAME
       - run:
           name: Run release
           command: yarn release
