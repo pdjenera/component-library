@@ -18,7 +18,7 @@ jobs:
           root: .
           paths:
             - node_modules
-            - package-lock.json
+            - yarn.json
             - package.json
             - src
             - .eslintrc.js
