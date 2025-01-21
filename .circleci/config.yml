@@ -14,6 +14,23 @@ jobs:
       - run:
           name: Lint
           command: yarn run lint
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+            - package-lock.json
+            - package.json
+            - src
+            - .eslintrc.js
+            - .prettierrc.js
+            - .gitignore
+            - .npmignore
+            - .nvmrc
+            - .circleci
+            - rollup.config.mjs
+            - commitlint.config.js
+            - tsconfig.json
+            - .husky
   testing:
     # Install node dependencies and run tests
     executor: node/default
@@ -42,28 +59,12 @@ jobs:
       - run:
           name: Create the ~/artifacts directory if it doesn't exist
           command: mkdir -p ~/artifacts
-      # Copy output to artifacts dir
       - run:
           name: Copy artifacts
           command: cp -R build dist public .output .next .docusaurus ~/artifacts 2>/dev/null || true
       - store_artifacts:
           path: ~/artifacts
           destination: node-build
-  run_release:
-    executor: node/default
-    description: Run release
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: yarn
-      - run:
-          name: Set up git credentials
-          command: |
-            git config --global user.email $GIT_EMAIL 
-            git config --global user.name $GIT_NAME
-      - run:
-          name: Run release
-          command: yarn release
   publish_to_npm:
     executor: node/default
     description: Publish to npm
@@ -84,18 +85,19 @@ jobs:
           command: yarn release
       - run:
           name: Publish to npm
-          command: yarn publish
+          command: |
+            CURRENT_VERSION=$(npm show pdjenera-component-library version)
+            LOCAL_VERSION=$(node -pe "require('./package.json').version")
+
+            if [ "$CURRENT_VERSION" != "$LOCAL_VERSION" ]; then
+              echo "Versions are different. Publishing to npm."
+              echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+              yarn publish
+            else
+              echo "Versions are the same. Skipping npm publish."
+            fi
           enironment:
             NPM_TOKEN: $NPM_TOKEN
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
-    docker:
-      - image: cimg/base:stable
-    steps:
-      # Replace this with steps to deploy to users
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
 workflows:
   build-and-test:
     jobs:
@@ -106,12 +108,6 @@ workflows:
       - building:
           requires:
             - testing
-      - run_release:
-          requires:
-            - building
       - publish_to_npm:
           requires:
             - run_release
-    # - deploy:
-    #     requires:
-    #       - build-node
