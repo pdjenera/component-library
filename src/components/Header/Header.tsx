@@ -53,7 +53,7 @@ const Header : FC<HeaderInterface> = ({
                     ) : (
                         <>
                             <Button size="sm" onClick={onLogin} text="Log in" />
-                            <Button buttonType='primary' size="sm" onClick={onCreateAccount} text="Sign up" />
+                            <Button buttonStyle='primary' size="sm" onClick={onCreateAccount} text="Sign up" />
                         </>
                     )}
                 </div>
