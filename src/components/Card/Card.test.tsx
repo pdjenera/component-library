@@ -4,43 +4,35 @@ import { render, cleanup } from '@testing-library/react';
 import Card from './Card';
 
 afterEach(cleanup);
+
 describe('Card component', () => {
-    it('renders children correctly', () => {
-        const { getByText } = render(<Card>Test Content</Card>);
-        expect(getByText('Test Content')).toBeInTheDocument();
+    it('renders title correctly', () => {
+        const { getByText } = render(<Card title="Card Title" />);
+        expect(getByText('Card Title')).toBeInTheDocument();
     });
 
-    it('applies primary color class', () => {
-        const { getByTestId } = render(<Card color="primary">Test Content</Card>);
-        const container = getByTestId('cardContainer');
-        expect(container).toHaveStyle(`
-            background-color:#9879e9;
-        `);
+    it('renders description correctly', () => {
+        const { getByText } = render(<Card description="Card Description" />);
+        expect(getByText('Card Description')).toBeInTheDocument();
     });
 
-    it('applies secondary color class', () => {
-        const { getByTestId } = render(<Card color="secondary">Test Content</Card>);
-        const container = getByTestId('cardContainer');
-        expect(container).toHaveStyle(`
-           background-color:#eb2d52;
-        `);
+    it('renders eyebrow correctly', () => {
+        const { getByText } = render(<Card eyebrow="Card Eyebrow" />);
+        expect(getByText('Card Eyebrow')).toBeInTheDocument();
     });
 
-    it('applies small size class', () => {
-        const { getByTestId } = render(<Card size="sm">Test Content</Card>);
-        const container = getByTestId('cardContainer');
-        expect(container).toHaveStyle(`
-            min-height:50px;
-        `);
+    it('renders image correctly', () => {
+        const { getByTestId } = render(<Card image={<img src="test.jpg" alt="test" />} />);
+        const imageContainer = getByTestId('cardContainer').querySelector('img');
+        expect(imageContainer).toHaveAttribute('src', 'test.jpg');
+        expect(imageContainer).toHaveAttribute('alt', 'test');
     });
 
-    it('applies large size class', () => {
-        const { getByTestId } = render(<Card size="lg">Test Content</Card>);
+    it('handles onClick event', () => {
+        const handleClick = jest.fn();
+        const { getByTestId } = render(<Card onClick={handleClick}></Card>);
         const container = getByTestId('cardContainer');
-        expect(container).toHaveStyle(`
-            min-height: 100px;
-        `);
+        container.click();
+        expect(handleClick).toHaveBeenCalledTimes(1);
     });
 });
-
-// We recommend installing an extension to run jest tests.

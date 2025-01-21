@@ -1,31 +1,70 @@
+import React from 'react';
 import styled from 'styled-components';
+import { theme } from '../../types/Theme';
 
 interface IObjectKeys {
     [key: string]: string | number;
-  }
+}
 
-const backgroundStyle : IObjectKeys= {
-    'primary': '#9879e9',
-    'secondary': '#eb2d52'
+const height : IObjectKeys= {
+    'sm': '75px',
+    'lg': '250px'
 };
 
-const size : IObjectKeys= {
-    'sm': '50px',
-    'lg': '100px'
+const imageHeight : IObjectKeys= {
+    'sm': '0px',
+    'lg': '175px'
+};
+
+const width : IObjectKeys= {
+    'sm': '200px',
+    'lg': '250px'
 };
 
 interface Props {
-    color?: 'primary' | 'secondary';
+    image?: React.ReactNode;
     size?: 'sm' | 'lg';
 }
 
 export const Container = styled.div<Props>`
     display: flex;
     flex-direction: column;
-    padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-    min-height:${(props) => size[props.size ? props.size : 'sm']};
-    background-color:${(props) => backgroundStyle[props.color ? props.color : 'primary']};
+    min-height:${(props) => height[props.image ? 'lg' : 'sm']};
+    max-width:${(props) => width[props.image ? 'lg' : 'sm']};
+    background-color:${theme.colors.cardBackground};
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+`;
+
+export const ImageContainer = styled.div<Props>`
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    height:${(props) => imageHeight[props.image ? 'lg' : 'sm']};
+    width: 100%;
+    img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: height;
+        display: block;
+    }
+`;
+
+export const TextContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    h5 {
+        margin: 0px 4px 0px 4px;
+        font-family: ${theme.font};
+    }
+    h2 {
+        margin: 4px;
+        font-family: ${theme.font};
+    }
+    p {
+        margin: 0px 4px 0px 4px;
+        font-family: ${theme.font};
+    }
 `;

@@ -10,7 +10,7 @@ const meta: Meta<typeof Button> = {
         onClick: () => console.log('Button Clicked'),
         icon: <IconLogin />,
         text: 'Click Me',
-        buttonType: 'primary',
+        buttonStyle: 'primary',
         size: 'sm'
     },
     argTypes: {
@@ -23,7 +23,7 @@ const meta: Meta<typeof Button> = {
         text: {
             description: 'Text to display on the button'
         },
-        buttonType: {
+        buttonStyle: {
             description: 'Color of the card you\'d like to set',
             options: ['primary', 'secondary'],
             table: {
@@ -51,7 +51,7 @@ export const Primary: Story = {
         onClick: () => console.log('Button Clicked'),
         icon: <IconLogin />,
         text: 'Click Me',
-        buttonType: 'primary',
+        buttonStyle: 'primary',
         size: 'sm'
     },
 } satisfies Story;
@@ -61,7 +61,7 @@ export const Secondary: Story = {
         onClick: () => console.log('Button Clicked'),
         icon: <IconLogin />,
         text: 'Click Me Secondary',
-        buttonType: 'secondary',
+        buttonStyle: 'secondary',
         size: 'lg'
     },
 } satisfies Story;
