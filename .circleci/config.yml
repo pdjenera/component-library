@@ -110,4 +110,4 @@ workflows:
             - testing
       - publish_to_npm:
           requires:
-            - run_release
+            - building
