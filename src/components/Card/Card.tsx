@@ -1,20 +1,33 @@
 import React, { FC, ReactNode } from 'react';
-import { Container } from './Card.styled';
+import { Container, ImageContainer, TextContainer } from './Card.styled';
 
 interface Card {
-    children?: ReactNode;
+    image?: ReactNode;
     color?: 'primary' | 'secondary';
-    size?: 'sm' | 'lg';
+    title?: string;
+    description?: string;
+    eyebrow?: string;
+    onClick?: () => void;
 }
 
 const Card : FC<Card> = ({
-    children,
+    image,
     color,
-    size
+    title,
+    description,
+    eyebrow,
+    onClick
 }) => {
     return (
-        <Container data-testid='cardContainer' color={color} size={size}>
-            {children}
+        <Container data-testid='cardContainer' color={color} image={image} onClick={onClick}>
+            <ImageContainer image={image}> 
+                {image}
+            </ImageContainer>     
+            <TextContainer>
+                <h5>{eyebrow}</h5>
+                <h2>{title}</h2>
+                <p>{description}</p>
+            </TextContainer>
         </Container>
     );
 };

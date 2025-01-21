@@ -6,15 +6,14 @@ export const theme = {
         powderWhite: '#FFFDF9',
         buttonSecondary: '#06B49A',
         buttonPrimary: '#AFDBD2',
-        onyx: '#36313D'
+        cardBackground: '#F9F9F7'
     },
-    fonts: ['sans-serif', 'Roboto'],
+    font: 'Helvetica Neue',
     fontSizes: {
         small: '1em',
         medium: '2em',
         large: '3em'
     }
-    
 };
 
 interface Props {
