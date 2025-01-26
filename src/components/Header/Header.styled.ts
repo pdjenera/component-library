@@ -7,12 +7,7 @@ export const Container = styled.div`
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 15px 20px;
     font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
-  
-    svg {
-        display: inline-block;
-        vertical-align: top;
-    }
+    height: 100px;
   
     h1 {
         display: inline-block;
@@ -31,5 +26,19 @@ export const Container = styled.div`
         margin-right: 10px;
         color: #333;
         font-size: 14px;
+    }
+`;
+
+export const IconContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    height: 100%;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 `;

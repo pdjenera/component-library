@@ -1,6 +1,4 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 
@@ -10,6 +8,7 @@ const __dirname = dirname(__filename);
 const config: StorybookConfig = {
     framework: '@storybook/react-webpack5',
     stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)', '../**/*.styles.@(css)'],
+    staticDirs: ['../src/components/assets'],
 
     docs: {
         autodocs: 'tag',

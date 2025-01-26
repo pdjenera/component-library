@@ -125,6 +125,8 @@
     "@tabler/icons-react": "^3.28.1",
     "@testing-library/dom": "^10.0.0",
     "@types/node": "*",
+    "file-loader": "^6.2.0",
+    "image-webpack-loader": "^8.1.0",
     "postcss": "^8.1.0",
     "rollup": "^2.14.0",
     "standard-version": "^9.5.0",
