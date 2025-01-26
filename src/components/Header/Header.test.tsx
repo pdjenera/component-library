@@ -24,18 +24,21 @@ describe('Header', () => {
 
     test('renders login and sign up buttons when user is not logged in', () => {
         renderHeader();
+        fireEvent.click(screen.getByTestId('hamburgerButton'));
         expect(screen.getByText('Log in')).toBeInTheDocument();
         expect(screen.getByText('Sign up')).toBeInTheDocument();
     });
 
     test('calls onLogin when login button is clicked', () => {
         renderHeader();
+        fireEvent.click(screen.getByTestId('hamburgerButton'));
         fireEvent.click(screen.getByText('Log in'));
         expect(mockLogin).toHaveBeenCalled();
     });
 
     test('calls onCreateAccount when sign up button is clicked', () => {
         renderHeader();
+        fireEvent.click(screen.getByTestId('hamburgerButton'));
         fireEvent.click(screen.getByText('Sign up'));
         expect(mockCreateAccount).toHaveBeenCalled();
     });
@@ -44,12 +47,14 @@ describe('Header', () => {
         const user = { name: 'John Doe' };
         renderHeader({ user });
         expect(screen.getByText(`${user.name}`)).toBeInTheDocument();
+        fireEvent.click(screen.getByTestId('hamburgerButton'));
         expect(screen.getByText('Log out')).toBeInTheDocument();
     });
 
     test('calls onLogout when logout button is clicked', () => {
         const user = { name: 'John Doe' };
         renderHeader({ user });
+        fireEvent.click(screen.getByTestId('hamburgerButton'));
         fireEvent.click(screen.getByText('Log out'));
         expect(mockLogout).toHaveBeenCalled();
     });

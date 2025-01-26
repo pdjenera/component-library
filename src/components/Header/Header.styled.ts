@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../../types/Theme';
 
 export const Container = styled.div`
     display: flex;
@@ -7,7 +8,7 @@ export const Container = styled.div`
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 15px 20px;
     font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    height: 100px;
+    height: ${theme.sizes.headerHeight};
   
     h1 {
         display: inline-block;
@@ -41,4 +42,11 @@ export const IconContainer = styled.div`
         height: 100%;
         object-fit: contain;
     }
+`;
+
+export const MenuContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 `;

@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/pdjenera/component-library/compare/v1.0.3...v1.1.0) (2025-01-26)
+
+
+### Features
+
+* adding hamburger component to component library ([5d6a500](https://github.com/pdjenera/component-library/commit/5d6a500e820fe1033efd7811092ad58d5394b0da))
+* refactored based compontent to typescript and added themeing ([46dbf0b](https://github.com/pdjenera/component-library/commit/46dbf0bb29b0079a036d6550f15df7d04d1d58fc))
+
+
+### Bug Fixes
+
+* added tests for button and header ([e744e41](https://github.com/pdjenera/component-library/commit/e744e4185f24ac41ce15c09534cd0e47641ff711))
+* cleaned up hamburger stlying ([8147236](https://github.com/pdjenera/component-library/commit/81472363caaa72c140d200888262314b466ff735))
+* fix card tests ([0e58bd9](https://github.com/pdjenera/component-library/commit/0e58bd96b0d3ebc4da69d40c7e717d265da5946d))
+* fixed header tests ([621e36d](https://github.com/pdjenera/component-library/commit/621e36d55556b42caba1820f835bdd8d80a74905))
+* updated package.json ([80f4715](https://github.com/pdjenera/component-library/commit/80f47158a11b1f4047f90dfe94526ac850cfa23f))
+
 ### [1.0.2](https://github.com/pdjenera/component-library/compare/v1.0.3...v1.0.2) (2025-01-19)
 
 ### [1.0.3](https://github.com/pdjenera/component-library/compare/v1.0.2...v1.0.3) (2025-01-19)

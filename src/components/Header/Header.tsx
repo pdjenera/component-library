@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
-import { Container, IconContainer } from './Header.styled';
-import Button from '../Button/Button';
+import { Container, IconContainer, MenuContainer } from './Header.styled';
+import Hamburger from '../Hamburger/Hamburger';
+import { IconMenu } from '@tabler/icons-react';
 
 export interface User {
     name: string;
@@ -27,21 +28,31 @@ const Header : FC<HeaderInterface> = ({
                 <IconContainer>
                     {icon}
                 </IconContainer>
-                <div>
+                <MenuContainer>
                     {user ? (
                         <>
                             <span className="welcome">
                 Welcome, <b>{user.name}</b>!
                             </span>
-                            <Button size="sm" onClick={onLogout} text="Log out" />
+                            <Hamburger 
+                                icon={<IconMenu/>} 
+                                menuItems={[
+                                    { name: 'Profile', clickHandler: () => {} },
+                                    { name: 'Settings', clickHandler: () => {} },
+                                    { name: 'Log out', clickHandler: onLogout }
+                                ]}
+                            />
                         </>
                     ) : (
-                        <>
-                            <Button size="sm" onClick={onLogin} text="Log in" />
-                            <Button buttonStyle='primary' size="sm" onClick={onCreateAccount} text="Sign up" />
-                        </>
+                        <Hamburger 
+                            icon={<IconMenu/>} 
+                            menuItems={[
+                                { name: 'Sign up', clickHandler: onCreateAccount },
+                                { name: 'Log in', clickHandler: onLogin }
+                            ]}
+                        />
                     )}
-                </div>
+                </MenuContainer>
             </Container>
         </header>
     );

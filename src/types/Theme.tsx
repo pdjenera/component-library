@@ -12,13 +12,14 @@ export const theme = {
     },
     font: 'Helvetica Neue',
     fontSizes: {
-        small: '1em',
+        xsmall: '1em',
+        small: '1.2em',
         medium: '2em',
         large: '3em'
     },
     sizes: {
         headerWidth: '100%',
-        headerHeight: '30px'
+        headerHeight: '60px'
     }
 };
 
