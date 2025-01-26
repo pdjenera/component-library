@@ -19,7 +19,7 @@ export const HamburgerMenuContainer = styled.div`
     position: absolute;
     left: 0;
     top: ${theme.sizes.headerHeight};
-    border: 1px solid #333;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 `;
 
 export const HamburgerMenuItem = styled.div`

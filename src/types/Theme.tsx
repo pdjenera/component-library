@@ -12,7 +12,8 @@ export const theme = {
     },
     font: 'Helvetica Neue',
     fontSizes: {
-        small: '1em',
+        xsmall: '1em',
+        small: '1.2em',
         medium: '2em',
         large: '3em'
     },
