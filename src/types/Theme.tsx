@@ -6,13 +6,19 @@ export const theme = {
         powderWhite: '#FFFDF9',
         buttonSecondary: '#06B49A',
         buttonPrimary: '#AFDBD2',
-        cardBackground: '#F9F9F7'
+        cardBackground: '#F9F9F7',
+        hamburgerMenuItemBackground: '#FFFDF9',
+        hamburgerMenuItemHoverColor: '#e0e0de',
     },
     font: 'Helvetica Neue',
     fontSizes: {
         small: '1em',
         medium: '2em',
         large: '3em'
+    },
+    sizes: {
+        headerWidth: '100%',
+        headerHeight: '30px'
     }
 };
 

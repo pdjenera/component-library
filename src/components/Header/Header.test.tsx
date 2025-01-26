@@ -11,7 +11,7 @@ const renderHeader = (props: Partial<HeaderInterface> = {}) => {
     const defaultProps: HeaderInterface = {
         onLogin: mockLogin,
         onLogout: mockLogout,
-        onCreateAccount: mockCreateAccount,
+        onCreateAccount: mockCreateAccount
     };
     return render(<Header {...defaultProps} {...props} />);
 };
