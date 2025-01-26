@@ -75,7 +75,6 @@ export const HamburgerButton = styled.div`
     display: block;
     background-color: #fff;
     position: absolute;
-    height: 4px;
     width: 30px;
     transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
     border-radius: 2px;

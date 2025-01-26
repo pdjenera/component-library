@@ -19,7 +19,7 @@ export const theme = {
     },
     sizes: {
         headerWidth: '100%',
-        headerHeight: '30px'
+        headerHeight: '60px'
     }
 };
 
