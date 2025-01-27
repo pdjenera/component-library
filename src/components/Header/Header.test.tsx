@@ -2,6 +2,8 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Header, { HeaderInterface } from './Header';
+import CustomThemeProvider from '../../types/Theme';
+import { defaultTheme } from '../../types/Theme';
 
 const mockLogin = jest.fn();
 const mockLogout = jest.fn();
@@ -13,7 +15,11 @@ const renderHeader = (props: Partial<HeaderInterface> = {}) => {
         onLogout: mockLogout,
         onCreateAccount: mockCreateAccount
     };
-    return render(<Header {...defaultProps} {...props} />);
+    return render(
+        <CustomThemeProvider theme={defaultTheme} >
+            <Header {...defaultProps} {...props} />
+        </CustomThemeProvider>
+    );
 };
 
 describe('Header', () => {

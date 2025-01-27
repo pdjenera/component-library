@@ -1,6 +1,6 @@
 /** @type { import('@storybook/react').Preview } */
 import React from 'react';
-import Theme from '../src/types/Theme';
+import CustomThemeProvider, { defaultTheme } from '../src/types/Theme';
 
 import './styles/global.scss';
 import './styles/tokens.scss';
@@ -17,9 +17,9 @@ export const parameters= {
 export const decorators = [
     Story => {
         return (
-            <Theme>
+            <CustomThemeProvider theme={defaultTheme} >
                 <Story />
-            </Theme>
+            </CustomThemeProvider>
         );
     },
 ];

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { theme } from '../../types/Theme';
 
 export const HamburgerMenu = styled.div`
     position: relative;
@@ -18,7 +17,7 @@ export const HamburgerMenuContainer = styled.div`
     align-items: center;
     position: absolute;
     left: 0;
-    top: ${theme.sizes.headerHeight};
+    top: ${props => props.theme.sizes.headerHeight};
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 `;
 
@@ -34,11 +33,11 @@ export const HamburgerMenuItem = styled.div`
     cursor: pointer;
     display: block;
     padding: 0 10px;
-    font-family: ${theme.font};
-    font-size: ${theme.fontSizes.small};
-    background-color: ${theme.colors.hamburgerMenuItemBackground};
+    font-family: ${props => props.theme.font};
+    font-size: ${props => props.theme.fontSizes.small};
+    background-color: ${props => props.theme.colors.hamburgerMenuItemBackground};
     &:hover {
-        background-color: ${theme.colors.hamburgerMenuItemHoverColor};
+        background-color: ${props => props.theme.colors.hamburgerMenuItemHoverColor};
     }
 `;
 

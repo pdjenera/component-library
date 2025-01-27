@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../types/Theme';
 
 interface IObjectKeys {
     [key: string]: string | number;
@@ -33,7 +32,7 @@ export const Container = styled.div<Props>`
     border-radius: 4px;
     min-height:${(props) => height[props.image ? 'lg' : 'sm']};
     max-width:${(props) => width[props.image ? 'lg' : 'sm']};
-    background-color:${theme.colors.cardBackground};
+    background-color:${props => props.theme.colors.cardBackground};
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 `;
 
@@ -57,14 +56,14 @@ export const TextContainer = styled.div`
     padding: 8px;
     h5 {
         margin: 0px 4px 0px 4px;
-        font-family: ${theme.font};
+        font-family: ${props => props.theme.font};
     }
     h2 {
         margin: 4px;
-        font-family: ${theme.font};
+        font-family: ${props => props.theme.font};
     }
     p {
         margin: 0px 4px 0px 4px;
-        font-family: ${theme.font};
+        font-family: ${props => props.theme.font};
     }
 `;

@@ -1,7 +1,7 @@
 import React, { ReactNode} from 'react';
 import { ThemeProvider } from 'styled-components';
 
-export const theme = {
+export const defaultTheme = {
     colors: {
         powderWhite: '#FFFDF9',
         buttonSecondary: '#06B49A',
@@ -24,11 +24,12 @@ export const theme = {
 };
 
 interface Props {
+    theme: typeof defaultTheme;
     children: ReactNode;
 }
 
-const Theme: React.FC<Props> = ({ children }) => (
+const CustomThemeProvider: React.FC<Props> = ({ theme, children }) => (
     <ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
 
-export default Theme;
+export default CustomThemeProvider;
