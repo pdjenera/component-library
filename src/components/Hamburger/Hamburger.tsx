@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { HamburgerMenuContainer, HamburgerMenuItem, HamburgerMenu, HamburgerButton} from './Hamburger.styled';
 
-type MenuItem = {
+export type MenuItem = {
     name: string;
     clickHandler: () => void;
 };

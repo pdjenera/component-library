@@ -1,40 +1,46 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, fireEvent, cleanup } from '@testing-library/react';
-import Button from './Button';
-import { theme } from '../../types/Theme';
+import { render, fireEvent, cleanup, screen } from '@testing-library/react';
+import Button, { ButtonInterface } from './Button';
+import CustomThemeProvider from '../../types/Theme';
+import { defaultTheme } from '../../types/Theme';
+
+const handleClick = jest.fn();
+
+const renderButton = (props: Partial<ButtonInterface> = {}) => {
+    return render(
+        <CustomThemeProvider theme={defaultTheme} >
+            <Button onClick={handleClick} {...props} />
+        </CustomThemeProvider>
+    );
+};
 
 afterEach(cleanup);
 describe('Button component', () => {
     it('renders without crashing', () => {
-        const handleClick = jest.fn();
-        const { getByTestId } = render(<Button onClick={handleClick} />);
-        expect(getByTestId('button')).toBeInTheDocument();
+        renderButton();
+        expect(screen.getByTestId('button')).toBeInTheDocument();
     });
 
     it('renders with text', () => {
-        const handleClick = jest.fn();
-        const { getByText } = render(<Button onClick={handleClick} text="Click me" />);
-        expect(getByText('Click me')).toBeInTheDocument();
+        renderButton({text: 'Click me'});
+        expect(screen.getByText('Click me')).toBeInTheDocument();
     });
 
     it('renders with icon', () => {
-        const handleClick = jest.fn();
-        const { getByTestId } = render(<Button onClick={handleClick} icon={<span data-testid="icon">Icon</span>} />);
-        expect(getByTestId('icon')).toBeInTheDocument();
+        renderButton({icon:<span data-testid="icon">Icon</span>});
+        expect(screen.getByTestId('icon')).toBeInTheDocument();
     });
 
     it('calls onClick when clicked', () => {
-        const handleClick = jest.fn();
-        const { getByTestId } = render(<Button onClick={handleClick} />);
-        fireEvent.click(getByTestId('button'));
+        renderButton();
+        fireEvent.click(screen.getByTestId('button'));
         expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
     it('applies buttonType and size correctly', () => {
-        const handleClick = jest.fn();
-        const { getByTestId } = render(<Button onClick={handleClick} buttonStyle='primary' size='lg' />);
-        const button = getByTestId('button');
-        expect(button).toHaveStyle('background-color: ' + theme.colors.buttonPrimary);
+        renderButton({buttonStyle: 'primary', size: 'lg'});
+        const button = screen.getByTestId('button');
+        expect(button).toHaveStyle('background-color: ' + defaultTheme.colors.buttonPrimary);
     });
 });

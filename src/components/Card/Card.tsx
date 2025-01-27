@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import { Container, ImageContainer, TextContainer } from './Card.styled';
 
-interface Card {
+export interface CardInterface {
     image?: ReactNode;
     color?: 'primary' | 'secondary';
     title?: string;
@@ -10,7 +10,7 @@ interface Card {
     onClick?: () => void;
 }
 
-const Card : FC<Card> = ({
+const Card : FC<CardInterface> = ({
     image,
     color,
     title,
