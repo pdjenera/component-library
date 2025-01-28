@@ -17,7 +17,8 @@
     "prepare": "husky",
     "lint": "eslint ./src ",
     "lint:fix": "eslint ./src --fix",
-    "release": "standard-version"
+    "release": "standard-version",
+    "chromatic": "npx chromatic --project-token=chpt_e4456e823cb1abe"
   },
   "babel": {
     "sourceType": "unambiguous",
@@ -125,6 +126,7 @@
     "@tabler/icons-react": "^3.28.1",
     "@testing-library/dom": "^10.0.0",
     "@types/node": "*",
+    "chromatic": "^11.25.1",
     "file-loader": "^6.2.0",
     "image-webpack-loader": "^8.1.0",
     "postcss": "^8.1.0",
