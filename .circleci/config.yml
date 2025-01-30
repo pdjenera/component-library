@@ -83,8 +83,6 @@ jobs:
       - run:
           name: Run release
           command: yarn release
-      run: yarn chromatic    
-          name: Run chromatic
       - run:
           name: Publish to npm
           command: |
