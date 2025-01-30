@@ -18,6 +18,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: yarn install
       - run: yarn run build
       - name: Get Release Token
         id: get_workflow_token
