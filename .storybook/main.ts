@@ -9,6 +9,13 @@ const config: StorybookConfig = {
     framework: '@storybook/react-webpack5',
     stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)', '../**/*.styles.@(css)'],
     staticDirs: ['../src/components/assets'],
+    refs: {
+        'design-system': {
+            title: 'Storybook Design System',
+            url: 'https://master--67984aca169649b6a8299c15.chromatic.com/',
+            expanded: false, // Optional, true by default,
+        },
+    },
 
     docs: {
         autodocs: 'tag',
@@ -25,7 +32,8 @@ const config: StorybookConfig = {
         '@storybook/preset-scss',
         '@storybook/addon-essentials',
         '@storybook/storybook-css-modules',
-        '@react-theming/storybook-addon'
+        '@react-theming/storybook-addon',
+        'storybook-version'
     ],
 
     webpackFinal: async (config) => {
