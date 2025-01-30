@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/pdjenera/component-library/compare/v1.0.3...v1.4.0) (2025-01-30)
+
+
+### Features
+
+* adding hamburger component to component library ([5d6a500](https://github.com/pdjenera/component-library/commit/5d6a500e820fe1033efd7811092ad58d5394b0da))
+* refactored based compontent to typescript and added themeing ([46dbf0b](https://github.com/pdjenera/component-library/commit/46dbf0bb29b0079a036d6550f15df7d04d1d58fc))
+
+
+### Bug Fixes
+
+* added tests for button and header ([e744e41](https://github.com/pdjenera/component-library/commit/e744e4185f24ac41ce15c09534cd0e47641ff711))
+* cleaned up hamburger stlying ([8147236](https://github.com/pdjenera/component-library/commit/81472363caaa72c140d200888262314b466ff735))
+* export all components ([52d685c](https://github.com/pdjenera/component-library/commit/52d685cf5491c037fc02903e22ebf93683f6a72e))
+* fix card tests ([0e58bd9](https://github.com/pdjenera/component-library/commit/0e58bd96b0d3ebc4da69d40c7e717d265da5946d))
+* fixed header tests ([621e36d](https://github.com/pdjenera/component-library/commit/621e36d55556b42caba1820f835bdd8d80a74905))
+* fixing stlyed components to be able to use outside theme ([12d8d7f](https://github.com/pdjenera/component-library/commit/12d8d7f42d03787a820669f71f3ad691cf4695c9))
+* fixing stlyed components to be able to use outside theme ([ad717c5](https://github.com/pdjenera/component-library/commit/ad717c5bf16cf45465e773a186c77621c00c58a3))
+* story book ([1458bb5](https://github.com/pdjenera/component-library/commit/1458bb58209163b2e9d47c4b7f47539dea7a02dd))
+* story book ([6642d65](https://github.com/pdjenera/component-library/commit/6642d65a8bff84551a2b84a2f14d8cfaa5eb0534))
+* story book ([20a8382](https://github.com/pdjenera/component-library/commit/20a83821aed88a7a4baa61dba055c13e3a1e99a7))
+* updated package.json ([80f4715](https://github.com/pdjenera/component-library/commit/80f47158a11b1f4047f90dfe94526ac850cfa23f))
+
 ## [1.3.0](https://github.com/pdjenera/component-library/compare/v1.0.3...v1.3.0) (2025-01-27)
 
 
