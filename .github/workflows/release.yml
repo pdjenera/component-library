@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      
+      - name: Setup git user 
         uses: fregante/setup-git-user@v1
 
       - name: Set up Node.js
@@ -33,11 +35,6 @@ jobs:
 
       - name: Build
         run: yarn build
-
-      - name: Setup Git
-        run: |
-          git config --global user.email $GIT_EMAIL
-          git config --global user.name $GIT_NAME
 
       - name: Release
         env:
