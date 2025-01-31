@@ -32,7 +32,6 @@ const meta: Meta<typeof Card> = {
                 defaultValue: { summary: 'primary'}
             }
         },
-        
     },
     tags: ['autodocs']
 } satisfies Meta<typeof Card>;
