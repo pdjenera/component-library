@@ -4,34 +4,23 @@ on:
      - master
 
 jobs:
-  release:
-   runs-on: ubuntu-latest
-
-   steps:
-    - name: checkout
-      uses: actions/checkout@v2
-
-    - name: conventional changelog action
-      id: changelog
-      # https://github.com/TriPSs/conventional-changelog-action
-      uses: TriPSs/conventional-changelog-action@latest
-      with:
-        # you can also create separate token to trace action
-        github-token: "${{ secrets.GITHUB_TOKEN }}"
-     - name: 'Get Previous tag'
-        id: previous_tag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+  generate_release:
+    name: Release
+    if: contains(github.event.pull_request.head.ref, 'release/v') && github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        
+      - name: Fetch version
+        run: |
+          VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\/v//")
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+        id: fetch-version
+        
+      - name: Generate release notes
+        uses: softprops/action-gh-release@v1
         with:
-          fallback: 1.0.0
-    - name: create release
-      # https://github.com/actions/create-release
-      uses: softprops/action-gh-release@v1
-      env:
-        # This token is provided by Actions, you do not need to create your own token
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-          tag_name: ${{ steps.changelog.outputs.tag }}
-          name: ${{ steps.changelog.outputs.tag }}
-          body: ${{steps.changelog.outputs.clean_changelog}}
-          draft: false
-          prerelease: false
+          token: "your github access token"
+          tag_name: v${{ steps.fetch-version.outputs.version }}
+          generate_release_notes: true
