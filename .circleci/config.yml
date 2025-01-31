@@ -132,6 +132,9 @@ workflows:
       - building:
           requires:
             - testing
+      - create_release:
+          requires:
+            - building
       - publish_to_npm:
           requires:
             - building
