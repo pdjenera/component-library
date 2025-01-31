@@ -37,4 +37,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn release
+        run: 
+          git config --global user.email $GIT_EMAIL
+          git config --global user.name $GIT_NAME
+          yarn release
