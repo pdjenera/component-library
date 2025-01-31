@@ -69,26 +69,13 @@ jobs:
     # Create a release on GitHub
     executor: node/default
     steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: yarn
+      - attach_workspace:
+        at: ~/artifacts
       - run:
-          name: Create release
-          command: yarn run release
-      - run:
-          name: Set up git credentials
+          name: "Publish Release on GitHub"
           command: |
-            git config --global user.email $GIT_EMAIL
-            git config --global user.name $GIT_NAME
-      - run:
-          name: Push changes
-          command: git push
-      - run:
-          name: Create release
-          command: npx semantic-release
-          environment:
-            GITHUB_TOKEN: $GITHUB_TOKEN
-            NODE_AUTH_TOKEN: $NPM_TOKEN    
+            VERSION=$(my-binary --version)
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts/ 
   publish_to_npm:
     executor: node/default
     description: Publish to npm
