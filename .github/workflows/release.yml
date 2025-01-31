@@ -18,7 +18,11 @@ jobs:
       with:
         # you can also create separate token to trace action
         github-token: "${{ secrets.GITHUB_TOKEN }}"
-
+     - name: 'Get Previous tag'
+        id: previous_tag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        with:
+          fallback: 1.0.0
     - name: create release
       # https://github.com/actions/create-release
       uses: softprops/action-gh-release@v1
