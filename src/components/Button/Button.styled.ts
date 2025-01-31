@@ -20,7 +20,7 @@ export const Container = styled.div<ButtonInterface>`
     background-color:${(props) => backgroundStyle[props.buttonStyle ? props.buttonStyle : 'primary']};
     border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: row;
     height: 40px;
