@@ -42,8 +42,17 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn release
       
-      - name: Publish
-        if: steps.check.outputs.version_changed == 'true'
-        run: yarn publish --access public --no-git-checks
+      - name: Publish to npm
+        run: |
+            CURRENT_VERSION=$(npm show pdjenera-component-library version)
+            LOCAL_VERSION=$(node -pe "require('./package.json').version")
+
+            if [ "$CURRENT_VERSION" != "$LOCAL_VERSION" ]; then
+              echo "Versions are different. Publishing to npm."
+              echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+              yarn publish
+            else
+              echo "Versions are the same. Skipping npm publish."
+            fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
