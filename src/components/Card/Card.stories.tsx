@@ -17,7 +17,7 @@ const meta: Meta<typeof Card> = {
             description: 'Title of the card',
         },
         description: {
-            description: 'Description of the card',
+            description: 'Description of the card.',
         },
         eyebrow: {
             description: 'Eyebrow of the card',
