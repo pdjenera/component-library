@@ -53,6 +53,6 @@ jobs:
               yarn publish
             else
               echo "Versions are the same. Skipping npm publish."
-            fi
+            fi 
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
