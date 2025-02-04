@@ -64,31 +64,7 @@ jobs:
           command: cp -R build dist public .output .next .docusaurus ~/artifacts 2>/dev/null || true
       - store_artifacts:
           path: ~/artifacts
-          destination: node-build
-  create_release:
-    # Create a release on GitHub
-    executor: node/default
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: yarn
-      - run:
-          name: Create release
-          command: yarn run release
-      - run:
-          name: Set up git credentials
-          command: |
-            git config --global user.email $GIT_EMAIL
-            git config --global user.name $GIT_NAME
-      - run:
-          name: Push changes
-          command: git push
-      - run:
-          name: Create release
-          command: npx semantic-release
-          environment:
-            GITHUB_TOKEN: $GITHUB_TOKEN
-            NODE_AUTH_TOKEN: $NPM_TOKEN    
+          destination: node-build 
   publish_to_npm:
     executor: node/default
     description: Publish to npm
