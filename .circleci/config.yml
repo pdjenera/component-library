@@ -108,7 +108,4 @@ workflows:
       - building:
           requires:
             - testing
-      - publish_to_npm:
-          requires:
-            - building
             
